@@ -1,11 +1,19 @@
 import Head from 'next/head';
+import { useQuery } from '@apollo/client';
+import { pokemonQuery } from '../utils/queries';
 import styles from '../styles/Home.module.scss';
 
-export default function Home() {
+const Home = () => {
+  const { data, loading, error } = useQuery(pokemonQuery);
+
+  if (!loading) {
+    console.log(data);
+  }
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Pokédex</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -62,4 +70,6 @@ export default function Home() {
       </footer>
     </div>
   );
-}
+};
+
+export default Home;
