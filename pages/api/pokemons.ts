@@ -49,6 +49,7 @@ const typeDefs = gql`
     genera: [Genera!]
     is_legendary: Boolean!
     is_mythical: Boolean!
+    evolution_chain: EvolutionChain!
     varieties: [Varieties!]
   }
 
@@ -68,6 +69,24 @@ const typeDefs = gql`
 
   type GeneraLanguage {
     name: String!
+  }
+
+  type EvolutionChain {
+    id: ID!
+    chain: Chain!
+  }
+
+  type Chain {
+    evolves_to: [Evolves!]
+  }
+
+  type Evolves {
+    species: EvolveSpecies!
+  }
+
+  type EvolveSpecies {
+    name: String!
+    url: String!
   }
 
   type Varieties {
@@ -126,6 +145,12 @@ const resolvers = {
         })
       );
       return results;
+    },
+  },
+  Species: {
+    evolution_chain: async (parent, args) => {
+      const res = await axios.get(parent.evolution_chain.url);
+      return res.data;
     },
   },
 };
