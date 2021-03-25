@@ -1,6 +1,6 @@
-import Head from 'next/head';
 import { useQuery } from '@apollo/client';
 import { pokemonQuery } from '../utils/queries';
+import Meta from '../components/Meta';
 import styles from '../styles/Home.module.scss';
 
 const Home = () => {
@@ -12,10 +12,7 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Pokédex</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta pageName={'Home'} />
 
       <main className={styles.main}>
         <h1 className={styles.title}>

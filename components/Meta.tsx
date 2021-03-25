@@ -1,0 +1,39 @@
+import Head from 'next/head';
+import { server } from '../config';
+
+const Meta = ({ title, pageName, keywords, description, url }) => {
+  return (
+    <Head>
+      <meta charSet="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="keywords" content={keywords} />
+      <meta name="description" content={description} />
+      <title>
+        {pageName} | {title}
+      </title>
+      <meta property="og:title" content={`${pageName} | ${title}`} />
+      <meta property="og:url" content={url} />
+      <meta property="og:type" content="game" />
+      <meta property="og:image" content="" />
+      <meta property="og:description" content={description} />
+      <meta property="fb:app_id" content="" />
+      <meta property="og:site_name" content={title} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="" />
+      <meta name="twitter:image" content="" />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+  );
+};
+
+Meta.defaultProps = {
+  title: 'Pokédex',
+  keywords:
+    'Pokédex,pokémon,Pokemon,pokemon,pokemon index,ポケモン,ぽけもん,ポケットモンスター,図鑑,ずかん,ポケモンずかん,ぽけもんずかん',
+  description:
+    'Pokédex provides information on Pokémon that appear in the "Pokémon" series.',
+  url: server,
+};
+
+export default Meta;
