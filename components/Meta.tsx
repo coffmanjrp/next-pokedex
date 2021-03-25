@@ -1,7 +1,15 @@
 import Head from 'next/head';
 import { server } from 'config';
 
-const Meta = ({ title, pageName, keywords, description, url }) => {
+type Meta = {
+  title: string;
+  pageName?: string;
+  keywords: string;
+  description: string;
+  url: string;
+};
+
+const Meta = ({ title, pageName, keywords, description, url }: Meta) => {
   return (
     <Head>
       <meta charSet="UTF-8" />
