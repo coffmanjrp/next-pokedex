@@ -1,10 +1,24 @@
 import { gql } from '@apollo/client';
 
-export const pokemonQuery = gql`
+export const pokemonListItemQuery = gql`
   query {
-    pokemon(id: 1) {
+    pokemons {
       id
       name
+      species {
+        genera {
+          genus
+          language {
+            name
+          }
+        }
+      }
+      sprites {
+        front_default
+      }
+      types {
+        name
+      }
     }
   }
 `;

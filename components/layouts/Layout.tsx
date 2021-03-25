@@ -5,7 +5,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Meta />
-      <div className="relative container mx-auto overflow-x-hidden h-screen">
+      <div className="relative container mx-auto overflow-x-hidden">
         <Header title={'Pokédex'} />
         {children}
         <Footer />
