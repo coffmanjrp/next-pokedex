@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
-import { pokemonQuery } from '../utils/queries';
-import Meta from '../components/Meta';
-import styles from '../styles/Home.module.scss';
+import { pokemonQuery } from 'utils/queries';
+import Meta from 'components/Meta';
+import styles from 'styles/Home.module.scss';
 
 const Home = () => {
   const { data, loading, error } = useQuery(pokemonQuery);

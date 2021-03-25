@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { server } from '../config';
-import '../styles/globals.scss';
+import { server } from 'config';
+import 'styles/globals.scss';
 
 const client = new ApolloClient({
   uri: `${server}/api/pokemons`,

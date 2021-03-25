@@ -1,17 +1,14 @@
 import Head from 'next/head';
-import { server } from '../config';
+import { server } from 'config';
 
 const Meta = ({ title, pageName, keywords, description, url }) => {
   return (
     <Head>
       <meta charSet="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="keywords" content={keywords} />
       <meta name="description" content={description} />
-      <title>
-        {pageName} | {title}
-      </title>
       <meta property="og:title" content={`${pageName} | ${title}`} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content="game" />
@@ -22,7 +19,11 @@ const Meta = ({ title, pageName, keywords, description, url }) => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="" />
       <meta name="twitter:image" content="" />
+      <link rel="canonical" href="" />
       <link rel="icon" href="/favicon.ico" />
+      <title>
+        {pageName} | {title}
+      </title>
     </Head>
   );
 };
