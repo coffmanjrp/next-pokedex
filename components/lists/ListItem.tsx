@@ -43,22 +43,25 @@ const ListItem = ({ id, name, sprites, species, types }: Props) => {
           >
             No.{id}
           </div>
-          <h3 className={`text-xl font-bold  ${styles.name}`}>
+          <h3 className={`text-xl font-bold ${styles.name}`}>
             {name.charAt(0).toUpperCase() + name.slice(1)}
           </h3>
           <p className={`text-sm ${styles.species}`}>
-            {species.genera.find((gen) => gen.language.name === 'en').genus}
+            {
+              species.genera.find(({ language }) => language.name === 'en')
+                .genus
+            }
           </p>
           <small
             className={`flex justify-around items-center mt-3 text-center ${styles.type}`}
           >
-            {types.map((type, index) => (
+            {types.map(({ name }, index) => (
               <span
                 key={index}
                 className="inline-block w-14 rounded-xl"
-                style={{ backgroundColor: typeColors[type.name] }}
+                style={{ backgroundColor: typeColors[name] }}
               >
-                {type.name}
+                {name}
               </span>
             ))}
           </small>
