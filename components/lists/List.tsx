@@ -1,12 +1,13 @@
 import { useQuery } from '@apollo/client';
-import { pokemonListItemQuery } from 'utils/queries';
+import { pokemonsListQuery } from 'utils/queries';
+import { Loading } from 'components/layouts';
 import { ListItem } from './';
 
 const List = () => {
-  const { data, loading, error } = useQuery(pokemonListItemQuery, {
+  const { data, loading, error } = useQuery(pokemonsListQuery, {
     variables: {
-      // offset: 0,
-      // limit: 151,
+      offset: 0,
+      limit: 151,
     },
   });
 
@@ -15,7 +16,7 @@ const List = () => {
   }
 
   if (loading) {
-    return <h2 className="text-xl font-bold text-center">Loading...</h2>;
+    return <Loading />;
   }
 
   return (
