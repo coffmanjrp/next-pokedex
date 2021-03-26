@@ -1,5 +1,4 @@
-import { Footer, Header } from './';
-import Meta from '../Meta';
+import { Footer, Header, Meta } from './';
 
 const Layout = ({ children }) => {
   return (

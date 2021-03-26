@@ -1,7 +1,5 @@
-import { Layout } from 'components/layouts';
+import { Layout, Meta } from 'components/layouts';
 import { List } from 'components/lists';
-import Meta from 'components/Meta';
-import styles from 'styles/Home.module.scss';
 
 const Home = () => {
   return (

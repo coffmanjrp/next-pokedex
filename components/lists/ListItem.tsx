@@ -1,9 +1,29 @@
 import { typeColors } from 'utils';
 import styles from 'styles/ListItem.module.scss';
 
-const ListItem = ({ pokemon }) => {
-  const { id, name, sprites, species, types } = pokemon;
+type Props = {
+  id: number;
+  name: string;
+  species: {
+    genera: {
+      genus: string;
+      language: {
+        name;
+      };
+    }[];
+  };
+  sprites: {
+    front_default: string;
+  };
+  types: {
+    name: string;
+    type: {
+      name: string;
+    };
+  }[];
+};
 
+const ListItem = ({ id, name, sprites, species, types }: Props) => {
   return (
     <>
       <div
