@@ -21,10 +21,10 @@ const List = () => {
   return (
     <>
       <div className="flex gap-5 flex-wrap justify-center items-center mx-auto max-w-screen-xl">
-        {data &&
-          data.pokemons.map((pokemon) => (
-            <ListItem key={pokemon.id} pokemon={pokemon} />
-          ))}
+        {data.pokemons.map(
+          (pokemon) =>
+            pokemon !== null && <ListItem key={pokemon.id} {...pokemon} />
+        )}
       </div>
     </>
   );
