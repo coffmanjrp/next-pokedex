@@ -2,11 +2,11 @@ import Head from 'next/head';
 import { server } from 'config';
 
 type Meta = {
-  title: string;
+  title?: string;
   pageName?: string;
-  keywords: string;
-  description: string;
-  url: string;
+  keywords?: string;
+  description?: string;
+  url?: string;
 };
 
 const Meta = ({ title, pageName, keywords, description, url }: Meta) => {
