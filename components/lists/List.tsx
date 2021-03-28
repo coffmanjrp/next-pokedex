@@ -1,18 +1,26 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useQuery } from '@apollo/client';
 import { pokemonsListQuery } from 'utils/queries';
 import { Loading } from 'components/layouts';
 import { ListItem } from './';
+import { setOffset, setLimit } from 'store/actions/pokemonsAction';
 
 const List = () => {
-  const [offset, setOffset] = useState(0);
-  const [limit, setLimit] = useState(30);
+  const dispatch = useDispatch();
+  const { offset, limit } = useSelector((state) => state.pokemons);
+
   const { data, loading, error } = useQuery(pokemonsListQuery, {
     variables: {
       offset,
       limit,
     },
   });
+
+  useEffect(() => {
+    dispatch(setOffset(0));
+    dispatch(setLimit(40));
+  }, []);
 
   return (
     <>
