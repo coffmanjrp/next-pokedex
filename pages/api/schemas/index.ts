@@ -1,5 +1,4 @@
-import axios from 'axios';
-import { ApolloServer, gql } from 'apollo-server-micro';
+import { gql } from 'apollo-server-micro';
 
 const typeDefs = gql`
   type Query {
@@ -113,59 +112,4 @@ const typeDefs = gql`
   }
 `;
 
-const resolvers = {
-  Query: {
-    pokemons: async (parent, { offset, limit }) => {
-      const res = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
-      );
-      const results = await Promise.all(
-        res.data.results.map(async (result) => {
-          const res = await axios.get(result.url);
-          return res.data;
-        })
-      );
-      return results;
-    },
-    pokemon: async (parent, { id }) => {
-      const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-      return res.data;
-    },
-  },
-  PokemonData: {
-    species: async (parent, args) => {
-      const res = await axios.get(parent.species.url);
-      return res.data;
-    },
-    types: async (parent, args) => {
-      const results = await Promise.all(
-        parent.types.map(async (result) => {
-          const res = await axios.get(result.type.url);
-          return res.data;
-        })
-      );
-      return results;
-    },
-  },
-  Species: {
-    evolution_chain: async (parent, args) => {
-      const res = await axios.get(parent.evolution_chain.url);
-      return res.data;
-    },
-  },
-};
-
-const apolloServer = new ApolloServer({
-  typeDefs,
-  resolvers,
-});
-
-const handler = apolloServer.createHandler({ path: '/api/pokemons' });
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
-export default handler;
+export default typeDefs;

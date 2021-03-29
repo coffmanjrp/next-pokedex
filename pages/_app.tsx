@@ -6,7 +6,7 @@ import { server } from 'config';
 import 'styles/globals.scss';
 
 const client = new ApolloClient({
-  uri: `${server}/api/pokemons`,
+  uri: `${server}/api/graphql`,
   cache: new InMemoryCache(),
 });
 
