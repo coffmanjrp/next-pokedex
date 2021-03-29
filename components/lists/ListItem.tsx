@@ -8,7 +8,7 @@ type Props = {
     genera: {
       genus: string;
       language: {
-        name;
+        name: string;
       };
     }[];
   };
