@@ -19,23 +19,21 @@ const List = () => {
 
   useEffect(() => {
     dispatch(setOffset(0));
-    dispatch(setLimit(40));
+    dispatch(setLimit(151));
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>
-      {error ? (
-        <h2 className="text-xl font-bold text-center">Error</h2>
-      ) : loading ? (
-        <Loading />
-      ) : (
-        <div className="flex gap-5 flex-wrap justify-center items-center mx-auto max-w-screen-xl">
-          {data.pokemons.map(
-            (pokemon) =>
-              pokemon !== null && <ListItem key={pokemon.id} {...pokemon} />
-          )}
-        </div>
-      )}
+      <div className="flex gap-5 flex-wrap justify-center items-center mx-auto max-w-screen-xl">
+        {data.pokemons.map(
+          (pokemon) =>
+            pokemon !== null && <ListItem key={pokemon.id} {...pokemon} />
+        )}
+      </div>
     </>
   );
 };
